@@ -1,24 +1,28 @@
 # HerokuMigrator
 
-TODO: Write a gem description
+This gem is provided AS-IS with no warranty or guarantees. If you run
+this gem you will be moving data in your Heroku database. There's a
+chance you will lose data. Back everything up before you even think
+about running heroku_migrator!
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'heroku_migrator'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it yourself using:
 
     $ gem install heroku_migrator
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+Usage:
+  heroku_migrator migrate APP
+
+Options:
+  -m, [--maintenance]                  # Use maintenance mode while copying data between databases
+                                       # Default: true
+  -d, [--database-type=DATABASE_TYPE]  # Specify the type of database to provision. http://www.heroku.com/pricing
+                                       # Default: heroku-postgresql:dev
+```
 
 ## Contributing
 
