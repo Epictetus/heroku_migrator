@@ -31,8 +31,6 @@ module HerokuMigrator
       end
 
       deprovision_old_database if yes?('Remove old database?')
-
-      say DATA.read, :green
     end
 
     private
@@ -97,10 +95,3 @@ module HerokuMigrator
   end
 
 end
-
-__END__
-
-Congratulations! You've finished migrating your data. Now go claim your reward!
-
-https://postgres.heroku.com/migration/
-
