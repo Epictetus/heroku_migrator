@@ -93,5 +93,4 @@ module HerokuMigrator
         first.sub(/_URL$/, '')
     end
   end
-
 end
