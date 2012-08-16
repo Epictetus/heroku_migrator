@@ -23,6 +23,8 @@ module HerokuMigrator
     def migrate(app)
       @app = app
 
+      say "Using #{require_heroku_cli!}"
+
       provision_new_database
 
       maintenance do
@@ -34,6 +36,18 @@ module HerokuMigrator
     end
 
     private
+
+    def require_heroku_cli!
+      exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+      ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
+        exts.each do |ext|
+          exe = "#{path}/heroku#{ext}"
+          return exe if File.executable? exe
+        end
+      end
+      say 'Heroku CLI is required. You need to install the heroku gem or toolbelt (https://toolbelt.heroku.com/).'
+      exit 1
+    end
 
     def app_option
       "-a #{@app}"
