@@ -59,6 +59,11 @@ module HerokuMigrator
     def provision_new_database
       add_addon options[:database_type]
       add_addon 'pgbackups'
+
+      # Development instances are provisioned instantly, but paid instances
+      # take 3-5 minutes to become available. The `pg:wait` command will block
+      # until the database instance comes up.
+      tell_heroku 'pg:wait'
     end
 
     def copy_database_contents
